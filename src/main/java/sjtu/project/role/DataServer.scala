@@ -1,7 +1,10 @@
-package sjtu.project
+package sjtu.project.role
 
 import java.io._
 import java.util.concurrent.LinkedBlockingQueue
+
+import sjtu.project.model.{Configuration, Task, TaskType}
+import sjtu.project.MiniDFS
 
 class DataServer(private val index: Int) extends Runnable {
   var task: Task = null

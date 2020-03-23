@@ -2,8 +2,10 @@ package sjtu.project
 
 import java.io._
 import java.util.regex.Pattern
+
 import javax.swing.JFileChooser
-import Configuration.fileSeperator
+import sjtu.project.model.Configuration.fileSeperator
+import sjtu.project.model.{Configuration, Task, TaskType}
 
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
@@ -97,7 +99,7 @@ object CommandProcess {
     } else {
       file = new File(filePath)
       if (file.exists() && file.isFile && !conflict(file)) {
-        MiniDFS.queueForNameServer.add(Task(TaskType.WRITE, file, "", 0, 0))
+        MiniDFS.queueForNameServer.add(model.Task(TaskType.WRITE, file, "", 0, 0))
       } else if (!file.exists()) {
         println(MiniDFS.CurrentTime() + " ERROR: file not exists")
       } else if (!file.isFile) {
@@ -115,9 +117,9 @@ object CommandProcess {
       println(MiniDFS.CurrentTime() + " ERROR: file not exist")
     } else {
       if (cmds.length == 2) {
-        MiniDFS.queueForNameServer.add(Task(TaskType.READ, null, cmds(1), 0, fileLength))
+        MiniDFS.queueForNameServer.add(model.Task(TaskType.READ, null, cmds(1), 0, fileLength))
       } else if (cmds.length == 4) {
-        MiniDFS.queueForNameServer.add(Task(TaskType.READ, null, cmds(1), cmds(2).toLong, cmds(3).toLong))
+        MiniDFS.queueForNameServer.add(model.Task(TaskType.READ, null, cmds(1), cmds(2).toLong, cmds(3).toLong))
       } else {
         println(MiniDFS.CurrentTime() + " ERROR: parameter num is not right")
       }

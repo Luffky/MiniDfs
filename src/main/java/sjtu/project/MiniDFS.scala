@@ -5,6 +5,9 @@ import java.util
 import java.util.concurrent._
 import java.util.{Collections, Date}
 
+import sjtu.project.model.{Configuration, Task}
+import sjtu.project.role.{ClientReader, DataServer, NameServer}
+
 object MiniDFS {
   val queueForDataServer0 = new LinkedBlockingQueue[Task]()
   val queueForDataServer1 = new LinkedBlockingQueue[Task]()

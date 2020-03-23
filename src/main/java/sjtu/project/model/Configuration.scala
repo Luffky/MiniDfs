@@ -1,4 +1,4 @@
-package sjtu.project
+package sjtu.project.model
 
 import scala.collection.mutable.ArrayBuffer
 

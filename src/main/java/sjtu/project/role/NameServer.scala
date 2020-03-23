@@ -1,9 +1,13 @@
-package sjtu.project
+package sjtu.project.role
 
 import java.io._
-import java.util.concurrent.{LinkedBlockingDeque, LinkedBlockingQueue}
+import java.util.concurrent.LinkedBlockingQueue
 import java.util.regex.Pattern
-import Configuration.fileSeperator
+
+import sjtu.project.model.Configuration.fileSeperator
+import sjtu.project.model.{Configuration, MiniDFSException, Task, TaskType}
+import sjtu.project._
+import sjtu.project.util.MD5Util
 
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
@@ -172,7 +176,7 @@ object NameServer {
           field.setAccessible(true)
           field.get(MiniDFS)
             .asInstanceOf[LinkedBlockingQueue[Task]]
-            .put(Task(TaskType.WRITE, f, fileBlockName, Configuration.LENGTHOFBLOCK * i, 0))
+            .put(model.Task(TaskType.WRITE, f, fileBlockName, Configuration.LENGTHOFBLOCK * i, 0))
         } catch {
           case e: InterruptedException => e.printStackTrace()
           case e: NoSuchFieldException => e.printStackTrace()
@@ -233,7 +237,7 @@ object NameServer {
       filed.setAccessible(true)
       filed.get(MiniDFS)
         .asInstanceOf[LinkedBlockingQueue[Task]]
-        .put(Task(TaskType.READ, null, blockFileName, offset, length, blockIndex, totalBlock, uid))
+        .put(model.Task(TaskType.READ, null, blockFileName, offset, length, blockIndex, totalBlock, uid))
     } catch {
       case e: InterruptedException => e.printStackTrace()
       case e: NoSuchFieldException => e.printStackTrace()

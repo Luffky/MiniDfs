@@ -1,7 +1,8 @@
-package sjtu.project
+package sjtu.project.role
+
+import sjtu.project.MiniDFS
 
 import scala.collection.mutable
-import scala.collection.mutable.ArrayBuffer
 
 
 class ClientReader(isPrint: Boolean) extends Runnable{

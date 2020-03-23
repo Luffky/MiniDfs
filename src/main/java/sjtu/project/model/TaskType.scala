@@ -1,4 +1,4 @@
-package sjtu.project
+package sjtu.project.model
 
 object TaskType extends Enumeration  {
   type TaskType = Value

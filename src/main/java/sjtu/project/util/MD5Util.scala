@@ -1,4 +1,4 @@
-package sjtu.project
+package sjtu.project.util
 
 import java.io.{File, FileInputStream, IOException, InputStream}
 import java.security.MessageDigest
